@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<div style="position:absolute; top:-18px; right:0px; left:0px;">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width", initial-scale="1.0">
+<link rel="stylesheet" type="text/css" href="stopwatch.css">
+	<title>stopwatch</title>
+</head>
+
+
+<body> 
+<div>
+
+<div id="cont1">
+	<p style="text-align: center;background-color:#8097A2;height: 50px;width: 10%; margin-left: 560px; color:#CCD5DC; padding-top: 15px;"> <b> Stopwatch </b> </p>
+</div>
+
+<div style="background-color:#EFEFEF; height: 500px; width: 100%; text-align: center; margin-bottom: -20px;
+ ">
+ <button id="btn1" onclick="startWatch()"><b>START</b></button>
+ <button id="btn1" onclick="pauseWatch()"><b>PAUSE</b></button>
+ <button id="btn1" onclick="lapse()"><b>LAPSE</b></button>
+
+ <button id="btn1" onclick="reset()"><-></button>
+
+ <div style="background-color:#FFFFFF; width:50%; height:180px; margin-left:300px;margin-top:60px; border-radius: 30px; border-width: 100px;">
+
+ 	<p  id="gee" style="color:#0277BD;font-size: 70px; padding-top: 45px;"> <b> <span id="hr">00</span>:<span id="min">00</span>:<span id="sec">00</span>:<small id="mls">00</small></b></p>
+
+ </div> <br><br>
+
+<div id="lapcont" style="overflow: auto; max-height:100px;color:#0277BD; font-size: 20px; background-color:#FFFFFF; width: 35%; border-radius:10px; margin-left:400px;">
+
+
+ 
+ 	
+
+ 
+</div>
+
+</div>
+
+
+<div id="cont2">
+	<p style="text-align: center;background-color:#8097A2;height: 50px;width: 40%; margin-left: 370px; color:#CCD5DC; padding-top: 15px; font-size: 20px;"><b> (c) Designed By: GREAT </b></p>
+</div>
+
+</div>
+
+
+
+<script type="text/javascript">
+ var timing;
+ var lap = [];
+
+	function startWatch() {
+		 ml = mls.innerHTML;
+	ml++
+	if(ml > 99) {
+		ml = 0;
+		sec.innerHTML++
+		if(sec.innerHTML > 59) {
+			sec.innerHTML = 0;
+			min.innerHTML++;
+			if(min.innerHTML > 59){
+				min.innerHTML = 0;
+			     hr.innerHTML ++;
+			}
+			
+		}
+
+
+	}
+
+mls.innerHTML = ml;
+timing = setTimeout(startWatch, 10)
+}
+
+
+function pauseWatch() {
+	clearTimeout(timing);
+}
+
+function lapse() {
+
+	let lap = hr.innerHTML + ':' + min.innerHTML + ':' + sec.innerHTML + ':' + mls.innerHTML;
+
+	lapcont.innerHTML += lap + '<br>';
+	
+}
+
+function reset() {
+	hr.innerHTML = '00';
+	min.innerHTML = '00';
+	sec.innerHTML = '00';
+	mls.innerHTML = '00';
+	clearTimeout(timing);
+	lapcont.innerHTML = '';
+}
+</script>
+
+
+
+
+</body>
+
+
+</html>
